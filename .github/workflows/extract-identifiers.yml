@@ -39,10 +39,10 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: ${{ matrix.repository }}
           path: "identifier-extractor/repo"
@@ -86,7 +86,7 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           token: ${{ secrets.PHPSTAN_BOT_TOKEN }}
 
@@ -100,7 +100,7 @@ jobs:
         working-directory: "identifier-extractor"
         run: "composer install --no-interaction --no-progress"
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with:
           pattern: identifiers-*
           path: identifier-extractor/tmp
@@ -119,7 +119,7 @@ jobs:
           git_commit_gpgsign: true
 
       - name: "Commit changes"
-        uses: "stefanzweifel/git-auto-commit-action@v5"
+        uses: "stefanzweifel/git-auto-commit-action@v6"
         id: "commit"
         with:
           commit_message: "Update errors identifiers"
